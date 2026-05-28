@@ -1,0 +1,647 @@
+/* PineFetch Design System */
+
+/* 1. Tokens */
+:root {
+    color-scheme: dark;
+
+    --pf-bg: #0a0b0f;
+    --pf-bg-deep: #06070b;
+    --pf-bg-high: #11172a;
+    --pf-panel: #11141d;
+    --pf-panel-soft: #151a24;
+    --pf-panel-muted: rgba(8, 10, 16, 0.7);
+    --pf-border: #232a3a;
+    --pf-border-strong: rgba(76, 242, 199, 0.38);
+    --pf-text: #e4e8f1;
+    --pf-muted: #9aa3b2;
+    --pf-accent: #4cf2c7;
+    --pf-accent-dim: rgba(76, 242, 199, 0.15);
+    --pf-accent-soft: rgba(76, 242, 199, 0.1);
+    --pf-danger: #ff5d6c;
+    --pf-danger-dim: rgba(255, 93, 108, 0.18);
+    --pf-warning: #f5c36a;
+    --pf-warning-dim: rgba(245, 195, 106, 0.16);
+    --pf-glow: rgba(76, 242, 199, 0.35);
+
+    --pf-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --pf-radius-sm: 8px;
+    --pf-radius-md: 10px;
+    --pf-radius-lg: 16px;
+    --pf-shadow-panel: 0 0 40px rgba(0, 0, 0, 0.35);
+    --pf-focus-ring: 0 0 0 1px var(--pf-accent), 0 0 18px var(--pf-accent-dim);
+    --pf-shell-width: 960px;
+}
+
+/* 2. Reset / Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle at top, var(--pf-bg-high) 0%, var(--pf-bg) 45%, var(--pf-bg-deep) 100%);
+    color: var(--pf-text);
+    font-family: var(--pf-font-mono);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* 3. Typography */
+.pf-title {
+    margin: 0;
+    color: var(--pf-text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.15;
+}
+
+.pf-subtitle {
+    margin: 0;
+    color: var(--pf-muted);
+    font-size: 0.85rem;
+    line-height: 1.45;
+}
+
+.pf-section-title {
+    margin: 0;
+    color: var(--pf-text);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.pf-text {
+    margin: 0;
+    color: var(--pf-text);
+    font-size: 0.85rem;
+}
+
+.pf-muted {
+    color: var(--pf-muted);
+}
+
+/* 4. Layout Primitives */
+.pf-app-shell {
+    width: min(100%, var(--pf-shell-width));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 24px;
+    display: grid;
+    align-content: start;
+    gap: 16px;
+}
+
+.pf-app-shell-narrow {
+    --pf-shell-width: 420px;
+}
+
+.pf-stack {
+    display: grid;
+    gap: 16px;
+}
+
+.pf-stack-sm {
+    display: grid;
+    gap: 10px;
+}
+
+.pf-row,
+.pf-field-row,
+.pf-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pf-row,
+.pf-toolbar {
+    flex-wrap: wrap;
+}
+
+.pf-field-row {
+    flex-wrap: nowrap;
+}
+
+.pf-toolbar {
+    justify-content: space-between;
+}
+
+.pf-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* 5. Panels */
+.pf-panel {
+    min-width: 0;
+    padding: 20px;
+    display: grid;
+    gap: 16px;
+    background: linear-gradient(145deg, var(--pf-panel) 0%, var(--pf-panel-soft) 100%);
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-radius-lg);
+    box-shadow: var(--pf-shadow-panel);
+}
+
+.pf-panel-soft {
+    padding: 12px;
+    display: grid;
+    gap: 12px;
+    background: var(--pf-panel-muted);
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+}
+
+.pf-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.pf-panel-heading {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+/* 6. Fields / Inputs */
+.pf-field {
+    display: grid;
+    gap: 8px;
+}
+
+.pf-label {
+    color: var(--pf-muted);
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+.pf-input,
+.pf-select,
+.pf-textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+    background: rgba(10, 13, 20, 0.7);
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-radius-md);
+    color: var(--pf-text);
+    font-size: 0.85rem;
+    outline: none;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.pf-input::placeholder,
+.pf-textarea::placeholder {
+    color: rgba(154, 163, 178, 0.7);
+}
+
+.pf-input:focus,
+.pf-select:focus,
+.pf-textarea:focus {
+    border-color: var(--pf-accent);
+    box-shadow: var(--pf-focus-ring);
+}
+
+.pf-input:disabled,
+.pf-select:disabled,
+.pf-textarea:disabled,
+.pf-btn:disabled,
+.pf-btn[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pf-input[aria-invalid="true"],
+.pf-input.pf-is-invalid,
+.pf-select[aria-invalid="true"],
+.pf-select.pf-is-invalid,
+.pf-textarea[aria-invalid="true"],
+.pf-textarea.pf-is-invalid {
+    border-color: rgba(255, 93, 108, 0.75);
+    box-shadow: 0 0 0 1px rgba(255, 93, 108, 0.7), 0 0 18px rgba(255, 93, 108, 0.25);
+}
+
+.pf-select {
+    min-height: 42px;
+    padding-right: 36px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--pf-muted) 50%),
+        linear-gradient(135deg, var(--pf-muted) 50%, transparent 50%);
+    background-position:
+        calc(100% - 17px) calc(50% - 3px),
+        calc(100% - 11px) calc(50% - 3px);
+    background-repeat: no-repeat;
+    background-size:
+        6px 6px,
+        6px 6px;
+}
+
+.pf-textarea {
+    min-height: 96px;
+    resize: vertical;
+}
+
+/* 7. Buttons */
+.pf-btn {
+    min-height: 40px;
+    padding: 10px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--pf-panel);
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-radius-md);
+    color: var(--pf-text);
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        color 0.2s ease,
+        filter 0.2s ease,
+        transform 0.2s ease;
+}
+
+.pf-btn:hover {
+    border-color: var(--pf-accent);
+    box-shadow: 0 0 12px var(--pf-accent-dim);
+}
+
+.pf-btn:active {
+    transform: translateY(1px);
+}
+
+.pf-btn:focus-visible {
+    outline: none;
+    box-shadow: var(--pf-focus-ring);
+}
+
+.pf-btn-primary {
+    background: var(--pf-accent);
+    border-color: var(--pf-accent);
+    color: #041016;
+    box-shadow: 0 0 20px var(--pf-glow);
+}
+
+.pf-btn-primary:hover {
+    box-shadow: 0 0 30px var(--pf-glow);
+    filter: brightness(1.05);
+}
+
+.pf-btn-ghost {
+    background: transparent;
+}
+
+.pf-btn-danger {
+    border-color: rgba(255, 93, 108, 0.5);
+    color: var(--pf-danger);
+}
+
+.pf-btn-danger:hover {
+    border-color: var(--pf-danger);
+    box-shadow: 0 0 12px var(--pf-danger-dim);
+}
+
+.pf-btn[aria-pressed="true"],
+.pf-btn.pf-is-active {
+    background: rgba(76, 242, 199, 0.12);
+    border-color: var(--pf-border-strong);
+    box-shadow: 0 0 0 1px rgba(76, 242, 199, 0.08) inset;
+}
+
+.pf-btn-loading {
+    position: relative;
+    padding-right: 36px;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.pf-btn-loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 14px;
+    height: 14px;
+    margin-top: -7px;
+    border: 2px solid rgba(228, 232, 241, 0.3);
+    border-top-color: var(--pf-text);
+    border-radius: 50%;
+    animation: pf-spin 0.8s linear infinite;
+}
+
+/* 8. Badges */
+.pf-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 24px;
+    padding: 4px 10px;
+    background: rgba(76, 242, 199, 0.12);
+    border: 1px solid var(--pf-accent-dim);
+    border-radius: 999px;
+    color: var(--pf-accent);
+    font-size: 0.7rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.pf-badge-muted {
+    background: rgba(154, 163, 178, 0.1);
+    border-color: rgba(154, 163, 178, 0.18);
+    color: var(--pf-muted);
+}
+
+.pf-badge-warning {
+    background: var(--pf-warning-dim);
+    border-color: rgba(245, 195, 106, 0.28);
+    color: var(--pf-warning);
+}
+
+.pf-badge-danger {
+    background: var(--pf-danger-dim);
+    border-color: rgba(255, 93, 108, 0.32);
+    color: var(--pf-danger);
+}
+
+/* 9. Toggles */
+.pf-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 14px;
+    background: rgba(8, 10, 16, 0.55);
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.pf-toggle-copy {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.pf-toggle-title {
+    color: var(--pf-text);
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.pf-toggle-hint {
+    color: var(--pf-muted);
+    font-size: 0.72rem;
+    line-height: 1.4;
+}
+
+.pf-toggle-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pf-toggle-track {
+    position: relative;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--pf-border);
+    border-radius: 999px;
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.pf-toggle-track::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: #d8dfea;
+    border-radius: 50%;
+    transition:
+        transform 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.pf-toggle-input:checked + .pf-toggle-track {
+    background: rgba(76, 242, 199, 0.2);
+    border-color: rgba(76, 242, 199, 0.32);
+    box-shadow: 0 0 0 1px rgba(76, 242, 199, 0.12) inset;
+}
+
+.pf-toggle-input:checked + .pf-toggle-track::after {
+    transform: translateX(18px);
+    background: var(--pf-accent);
+}
+
+.pf-toggle-input:focus-visible + .pf-toggle-track {
+    box-shadow: var(--pf-focus-ring);
+}
+
+.pf-toggle-input:disabled ~ .pf-toggle-track,
+.pf-toggle-input:disabled ~ .pf-toggle-copy,
+.pf-toggle:has(.pf-toggle-input:disabled) {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/* 10. Segmented Controls */
+.pf-segmented {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(8, 10, 16, 0.82);
+    border: 1px solid var(--pf-border);
+    border-radius: 999px;
+}
+
+.pf-segmented-btn {
+    min-height: 32px;
+    padding: 7px 13px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--pf-muted);
+    cursor: pointer;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        color 0.2s ease;
+}
+
+.pf-segmented-btn:hover {
+    border-color: var(--pf-accent);
+    color: var(--pf-text);
+    box-shadow: 0 0 12px var(--pf-accent-dim);
+}
+
+.pf-segmented-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--pf-accent), 0 0 12px var(--pf-accent-dim);
+}
+
+.pf-segmented-btn[aria-pressed="true"],
+.pf-segmented-btn[aria-selected="true"],
+.pf-segmented-btn.pf-is-active {
+    background: rgba(76, 242, 199, 0.16);
+    border-color: var(--pf-accent-dim);
+    color: var(--pf-text);
+    box-shadow: 0 0 0 1px var(--pf-accent-dim) inset;
+}
+
+/* 11. Hints / Status */
+.pf-hint {
+    margin: 0;
+    padding-left: 10px;
+    border-left: 2px solid var(--pf-accent);
+    color: var(--pf-muted);
+    font-size: 0.75rem;
+    line-height: 1.45;
+}
+
+.pf-status {
+    min-height: 1.1rem;
+    margin: 0;
+    color: var(--pf-muted);
+    font-size: 0.74rem;
+    line-height: 1.45;
+}
+
+.pf-status-success,
+.pf-text-accent {
+    color: var(--pf-accent);
+}
+
+.pf-status-error,
+.pf-text-danger {
+    color: var(--pf-danger);
+}
+
+.pf-status-warning,
+.pf-text-warning {
+    color: var(--pf-warning);
+}
+
+.pf-divider {
+    height: 1px;
+    background: var(--pf-border);
+}
+
+/* 12. Utilities */
+.pf-w-full {
+    width: 100%;
+}
+
+.pf-grow {
+    flex: 1 1 auto;
+}
+
+.pf-truncate {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pf-scroll-area {
+    min-height: 0;
+    overflow: auto;
+}
+
+.pf-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@keyframes pf-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 520px) {
+    .pf-app-shell {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .pf-panel {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .pf-panel-header,
+    .pf-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .pf-field-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .pf-field-row > .pf-btn,
+    .pf-toolbar > .pf-btn,
+    .pf-toolbar > .pf-segmented {
+        width: 100%;
+    }
+
+    .pf-segmented {
+        width: 100%;
+    }
+
+    .pf-segmented-btn {
+        flex: 1 1 0;
+    }
+}
