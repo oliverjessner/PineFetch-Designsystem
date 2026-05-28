@@ -1,6 +1,6 @@
 {
     "name": "pinefetch-designsystem",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "The designsystem for pinefetch and pinefetch-link-dump",
     "keywords": [
         "ui",
@@ -16,10 +16,20 @@
     },
     "license": "MIT",
     "author": "oliverjessner",
+    "style": "dist/pinefetch.css",
+    "files": [
+        "dist",
+        "design-system",
+        "assets/images/pinefetch.webp",
+        "assets/images/pinefetch-link-dump.webp",
+        "scripts",
+        "ai-guide.md",
+        "README.md"
+    ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "dependencies": {
-        "pinefetch": "github:oliverjessner/PineFetch"
+        "build:css": "node scripts/build-dist.js",
+        "prepublishOnly": "npm run build:css",
+        "publish:npm": "npm publish",
+        "test": "npm run build:css"
     }
 }

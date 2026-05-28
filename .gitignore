@@ -14,7 +14,7 @@ src-tauri/target
 # Build and test output
 dist/*
 !dist/
-!dist/pinefetch.min.css
+!dist/pinefetch.css
 build/
 .next/
 coverage/

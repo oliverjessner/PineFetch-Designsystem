@@ -6,11 +6,15 @@ This design system extracts the reusable UI language from PineFetch into a small
 
 It is not a rebuild of the PineFetch app. Do not copy PineFetch screens, app IDs, queue/history/download selectors, Tauri logic, or JavaScript.
 
-## CSS Files
+## Installation and CSS Files
 
-- Use `dist/pinefetch.min.css` when embedding the design system in another app or package.
+- Install the package with `npm install pinefetch-designsystem`.
+- In bundled apps, import `pinefetch-designsystem/dist/pinefetch.css` from the app entrypoint.
+- In static HTML tools without a bundler, copy or link the installed `dist/pinefetch.css` file.
+- Use `dist/pinefetch.css` as the distributed CSS entrypoint when embedding the design system in another app or package.
 - Use `design-system/pinefetch.css` when reading, reviewing, or changing the source styles.
 - Use `design-system/example.html` as the component reference page.
+- Do not import `design-system/pinefetch.css` from consuming apps; it is the readable source file, not the package entrypoint.
 
 ## Visual Language
 
@@ -118,6 +122,8 @@ Utilities:
 - `.pf-text-accent`, `.pf-text-danger`, `.pf-text-warning`: Token-based text colors.
 
 ## Token Rules
+
+The source CSS centralizes design values in `:root` tokens. Component rules should reuse `--pf-` variables for colors, spacing, radii, sizing, typography, shadows, and motion values instead of hardcoded literals.
 
 Use these variables instead of hardcoded colors:
 

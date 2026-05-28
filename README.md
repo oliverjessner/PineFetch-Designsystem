@@ -1,8 +1,8 @@
 # PineFetch Design System
 
-Only 10kb
+About 17 KB minified
 
-A small, reusable design system for PineFetch, PineFetch Link Dump, and compact tools such as browser extensions, Tauri mini apps, local admin panels, and internal utilities.
+A small, reusable design system for [PineFetch](https://github.com/oliverjessner/PineFetch), [PineFetch-Link-Dump](https://github.com/oliverjessner/PineFetch-Link-Dump), and compact tools such as browser extensions, Tauri mini apps, local admin panels, and internal utilities.
 
 This repo does not contain the full PineFetch app. It only extracts the general UI building blocks from the PineFetch CSS structure.
 
@@ -14,16 +14,36 @@ This repo does not contain the full PineFetch app. It only extracts the general 
 
 ## Files
 
-- [`design-system/pinefetch.css`](design-system/pinefetch.css): dependency-free CSS, usable directly via `<link>`.
+- [`dist/pinefetch.css`](dist/pinefetch.css): published CSS entrypoint for npm installs and direct `<link>` usage.
+- [`design-system/pinefetch.css`](design-system/pinefetch.css): readable source CSS for review and changes.
 - [`design-system/example.html`](design-system/example.html): standalone example page with all components.
 - [`ai-guide.md`](ai-guide.md): guide for AI assistants and code generators.
-- [`assets/images/`](assets/images/): logos and image assets for PineFetch projects.
 
-## Quick Start
+## Installation
+
+```sh
+npm install pinefetch-designsystem
+```
+
+Import the distributed CSS in your app entrypoint:
+
+```js
+import "pinefetch-designsystem/dist/pinefetch.css";
+```
+
+For a static HTML tool without a bundler, link the installed package file during development or copy `dist/pinefetch.css` into your public assets:
 
 ```html
-<link rel="stylesheet" href="design-system/pinefetch.css" />
+<link rel="stylesheet" href="./node_modules/pinefetch-designsystem/dist/pinefetch.css" />
 ```
+
+Inside this repo, the same CSS entrypoint is available here:
+
+```html
+<link rel="stylesheet" href="dist/pinefetch.css" />
+```
+
+## Quick Start
 
 ```html
 <main class="pf-app-shell pf-app-shell-narrow">
@@ -78,6 +98,16 @@ When using this design system in a new UI:
 
 Details are available in [`ai-guide.md`](ai-guide.md).
 
+## Publish to npm
+
+Build the distribution CSS and publish the package:
+
+```sh
+npm run publish:npm
+```
+
+The `prepublishOnly` script runs `npm run build:css` automatically before `npm publish`.
+
 ## View the Example
 
 The example page can be opened directly in the browser:
@@ -87,3 +117,5 @@ design-system/example.html
 ```
 
 It shows a panel, header, badge, input, select, textarea, primary/ghost/danger buttons, toggle, segmented control, hint, and status text.
+
+![](/assets/images/exmaple.webp)
