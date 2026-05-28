@@ -728,6 +728,10 @@ body {
     border: var(--pf-size-0);
 }
 
+.pf-non-select {
+    user-select: none;
+}
+
 @keyframes pf-spin {
     to {
         transform: rotate(var(--pf-spin-rotation));
