@@ -1,6 +1,6 @@
 # PineFetch Design System
 
-About 17 KB minified
+About 23 KB minified
 
 A small, reusable design system for [PineFetch](https://github.com/oliverjessner/PineFetch), [PineFetch-Link-Dump](https://github.com/oliverjessner/PineFetch-Link-Dump), and compact tools such as browser extensions, Tauri mini apps, local admin panels, and internal utilities.
 
@@ -28,7 +28,7 @@ npm install pinefetch-designsystem
 Import the distributed CSS in your app entrypoint:
 
 ```js
-import "pinefetch-designsystem/dist/pinefetch.css";
+import 'pinefetch-designsystem/dist/pinefetch.css';
 ```
 
 For a static HTML tool without a bundler, link the installed package file during development or copy `dist/pinefetch.css` into your public assets:

@@ -119,6 +119,7 @@
     --pf-list-card-media-width: 128px;
     --pf-icon-btn-size: 32px;
     --pf-icon-btn-radius: 6px;
+    --pf-card-layout-max-width-520: 160px;
     --pf-terminal-max-height: 240px;
     --pf-menu-min-width: 240px;
     --pf-menu-gap: 6px;
@@ -850,7 +851,9 @@ body {
     border: var(--pf-border-width) solid var(--pf-border);
     border-radius: var(--pf-radius-mobile-panel);
     background: var(--pf-bg);
-    box-shadow: 0 18px 48px var(--pf-shadow-color), var(--pf-shadow-inset-accent);
+    box-shadow:
+        0 18px 48px var(--pf-shadow-color),
+        var(--pf-shadow-inset-accent);
     backdrop-filter: blur(16px);
 }
 
@@ -1016,7 +1019,7 @@ body {
     }
 
     .pf-list-card-layout .pf-media-thumbnail {
-        max-width: 160px;
+        max-width: var(--pf-card-layout-max-width-520);
         justify-self: end;
     }
 }
