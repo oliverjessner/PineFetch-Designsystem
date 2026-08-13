@@ -34,6 +34,10 @@ When building a new UI with this design system:
 - Use `.pf-toggle` for binary settings.
 - Use `.pf-segmented` and `.pf-segmented-btn` for small mode selectors.
 - Use `.pf-hint` for helper copy and `.pf-status` for live result text.
+- Use `.pf-progress` and `.pf-progress-bar` for determinate progress.
+- Use `.pf-list-card` for reusable interactive result rows and `.pf-media-thumbnail` for their media.
+- Use `.pf-menu` and `.pf-menu-item` for compact action menus.
+- Use `.pf-terminal` for logs and command output.
 - Use existing CSS variables instead of hardcoded colors.
 - Do not use PineFetch app-specific IDs or selectors.
 - Do not introduce public classes unless they start with `pf-`.
@@ -102,6 +106,33 @@ Segmented controls:
 - `.pf-segmented`: Pill container for mode buttons.
 - `.pf-segmented-btn`: One segment button.
 - `.pf-is-active`, `aria-pressed="true"`, or `aria-selected="true"`: Active segment state.
+
+Progress and media:
+
+- `.pf-progress`: Progress track.
+- `.pf-progress-bar`: Progress fill; set its width inline or through JavaScript.
+- `.pf-media-thumbnail`: Reusable 16:9 image or background-image surface.
+
+List cards and icon buttons:
+
+- `.pf-list-card`: Interactive bordered row/card with hover and selected states.
+- `.pf-list-card-layout`: Content-plus-media grid inside a list card.
+- `.pf-no-media`: Removes the media column when used with `.pf-list-card-layout`.
+- `.pf-icon-btn`: Compact icon-only action.
+- `.pf-icon-btn-danger`: Destructive hover state for an icon button.
+
+Terminal and menus:
+
+- `.pf-terminal`: Bounded dark log surface; normally combine with `.pf-panel-soft`.
+- `.pf-terminal-header`, `.pf-terminal-body`, `.pf-terminal-line`: Terminal structure.
+- `.pf-menu`: Compact menu surface.
+- `.pf-menu-popover`: Fixed-position menu layer.
+- `.pf-menu-group`, `.pf-menu-divider`, `.pf-menu-item`, `.pf-menu-item-danger`: Menu structure and actions.
+
+Statistics:
+
+- `.pf-stat`: Compact statistic container; normally combine with `.pf-panel-soft`.
+- `.pf-stat-value`: Accent-colored prominent value.
 
 Hints and status:
 

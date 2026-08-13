@@ -78,6 +78,10 @@ The CSS provides reusable building blocks:
 - Inputs, selects, textareas, labels, and field rows
 - Hints, status text, and dividers
 - Toggles and segmented controls
+- Progress bars and media thumbnails
+- Interactive list cards and icon buttons
+- Terminal/log viewers and context menus
+- Compact statistic values
 - Focus, hover, disabled, active, loading, and invalid states
 - Small utility classes such as `pf-stack`, `pf-row`, `pf-grid`, `pf-grow`, `pf-w-full`
 
@@ -116,6 +120,6 @@ The example page can be opened directly in the browser:
 design-system/example.html
 ```
 
-It shows a panel, header, badge, input, select, textarea, primary/ghost/danger buttons, toggle, segmented control, hint, and status text.
+It shows forms, buttons, toggles, segmented controls, progress, media, list cards, icon buttons, a terminal, a menu, statistics, hints, and status text.
 
 ![](/assets/images/exmaple.webp)

@@ -68,6 +68,49 @@
                     <p class="pf-status pf-status-error">Example error state.</p>
                 </div>
 
+                <div class="pf-panel-soft pf-stat">
+                    <span class="pf-label">Processed files</span>
+                    <p class="pf-stat-value">24</p>
+                </div>
+
+                <div class="pf-list-card">
+                    <div class="pf-list-card-layout">
+                        <div class="pf-stack-sm">
+                            <strong>Example download</strong>
+                            <div class="pf-progress" aria-label="Download progress" aria-valuenow="72">
+                                <span class="pf-progress-bar" style="width: 72%"></span>
+                            </div>
+                            <span class="pf-muted">72% · 4.2 MB/s</span>
+                        </div>
+                        <div
+                            class="pf-media-thumbnail"
+                            style="background-image: linear-gradient(135deg, var(--pf-bg-high), var(--pf-accent-dim))"
+                            role="img"
+                            aria-label="Example thumbnail"
+                        ></div>
+                    </div>
+                </div>
+
+                <section class="pf-panel-soft pf-terminal">
+                    <header class="pf-panel-header pf-terminal-header">
+                        <h2 class="pf-section-title">Terminal</h2>
+                        <button class="pf-icon-btn pf-icon-btn-danger" type="button" aria-label="Clear terminal">×</button>
+                    </header>
+                    <div class="pf-terminal-body">
+                        <div class="pf-terminal-line">[download] Ready</div>
+                        <div class="pf-terminal-line pf-status-success">[done] File saved</div>
+                    </div>
+                </section>
+
+                <div class="pf-menu" role="menu" aria-label="Example actions">
+                    <div class="pf-menu-group">
+                        <button class="pf-menu-item" type="button" role="menuitem">Open file</button>
+                        <button class="pf-menu-item" type="button" role="menuitem">Copy path</button>
+                    </div>
+                    <div class="pf-menu-divider"></div>
+                    <button class="pf-menu-item pf-menu-item-danger" type="button" role="menuitem">Remove</button>
+                </div>
+
                 <div class="pf-divider"></div>
 
                 <p class="pf-hint">Use the token colors and prefixed classes when embedding this in another app.</p>

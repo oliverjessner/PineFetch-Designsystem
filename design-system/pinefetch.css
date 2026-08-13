@@ -114,6 +114,16 @@
     --pf-spinner-border-width: 2px;
     --pf-visually-hidden-size: 1px;
     --pf-status-min-height: 1.1rem;
+    --pf-progress-height: 10px;
+    --pf-media-aspect-ratio: 16 / 9;
+    --pf-list-card-media-width: 128px;
+    --pf-icon-btn-size: 32px;
+    --pf-icon-btn-radius: 6px;
+    --pf-terminal-max-height: 240px;
+    --pf-menu-min-width: 240px;
+    --pf-menu-gap: 6px;
+    --pf-menu-z-index: 1000;
+    --pf-stat-value-size: 1.35rem;
     --pf-visually-hidden-clip: rect(0, 0, 0, 0);
     --pf-flex-static: 0 0 auto;
     --pf-flex-grow: 1 1 auto;
@@ -135,6 +145,8 @@
     /* Shadow tokens */
     --pf-shadow-panel: 0 0 40px var(--pf-shadow-color);
     --pf-shadow-hover: 0 0 12px var(--pf-accent-dim);
+    --pf-shadow-list-card-hover: 0 0 8px var(--pf-accent-dim);
+    --pf-shadow-list-card-active: 0 0 16px var(--pf-accent-dim);
     --pf-shadow-hover-danger: 0 0 12px var(--pf-danger-dim);
     --pf-shadow-primary: 0 0 20px var(--pf-glow);
     --pf-shadow-primary-hover: 0 0 30px var(--pf-glow);
@@ -696,7 +708,231 @@ body {
     background: var(--pf-border);
 }
 
-/* 12. Utilities */
+/* 12. Progress */
+.pf-progress {
+    position: relative;
+    height: var(--pf-progress-height);
+    overflow: hidden;
+    border-radius: var(--pf-radius-pill);
+    background: var(--pf-switch-bg);
+}
+
+.pf-progress-bar,
+.pf-progress > span {
+    position: absolute;
+    inset: var(--pf-space-0) auto var(--pf-space-0) var(--pf-space-0);
+    width: var(--pf-size-0);
+    background: var(--pf-accent);
+    box-shadow: 0 0 10px var(--pf-glow);
+    transition: width 0.25s var(--pf-ease-standard);
+}
+
+/* 13. Media */
+.pf-media-thumbnail {
+    width: var(--pf-size-full);
+    aspect-ratio: var(--pf-media-aspect-ratio);
+    border: var(--pf-border-width) solid var(--pf-border);
+    border-radius: var(--pf-radius-md);
+    background-color: var(--pf-panel-muted);
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+}
+
+/* 14. Interactive list cards */
+.pf-list-card {
+    position: relative;
+    padding: var(--pf-space-2xl);
+    border: var(--pf-border-width) solid var(--pf-border);
+    border-radius: var(--pf-radius-group);
+    background: var(--pf-panel-muted);
+    cursor: pointer;
+    transition:
+        border-color var(--pf-duration-normal) var(--pf-ease-standard),
+        box-shadow var(--pf-duration-normal) var(--pf-ease-standard);
+}
+
+.pf-list-card:hover {
+    border-color: var(--pf-accent);
+    box-shadow: var(--pf-shadow-list-card-hover);
+}
+
+.pf-list-card[aria-selected='true'],
+.pf-list-card.pf-is-active {
+    border-color: var(--pf-accent);
+    box-shadow: var(--pf-shadow-list-card-active);
+}
+
+.pf-list-card-layout {
+    display: grid;
+    grid-template-columns: minmax(var(--pf-size-0), 1fr) var(--pf-list-card-media-width);
+    align-items: center;
+    gap: var(--pf-space-2xl);
+}
+
+.pf-list-card-layout.pf-no-media {
+    grid-template-columns: minmax(var(--pf-size-0), 1fr);
+}
+
+/* 15. Icon buttons */
+.pf-icon-btn {
+    width: var(--pf-icon-btn-size);
+    height: var(--pf-icon-btn-size);
+    padding: var(--pf-space-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--pf-border-width) solid var(--pf-transparent);
+    border-radius: var(--pf-icon-btn-radius);
+    background: var(--pf-transparent);
+    color: var(--pf-muted);
+    cursor: pointer;
+    font: inherit;
+    line-height: 1;
+    transition:
+        background-color var(--pf-duration-normal) var(--pf-ease-standard),
+        border-color var(--pf-duration-normal) var(--pf-ease-standard),
+        box-shadow var(--pf-duration-normal) var(--pf-ease-standard),
+        color var(--pf-duration-normal) var(--pf-ease-standard);
+}
+
+.pf-icon-btn:hover {
+    background: var(--pf-accent-active);
+    color: var(--pf-text);
+}
+
+.pf-icon-btn:focus-visible {
+    outline: none;
+    border-color: var(--pf-accent);
+    box-shadow: var(--pf-focus-ring-soft);
+}
+
+.pf-icon-btn-danger:hover {
+    background: var(--pf-danger-dim);
+    color: var(--pf-danger);
+}
+
+/* 16. Terminal */
+.pf-terminal {
+    max-height: var(--pf-terminal-max-height);
+    grid-template-rows: auto minmax(var(--pf-size-0), 1fr);
+    overflow: hidden;
+    background: var(--pf-bg-deep);
+}
+
+.pf-terminal-header {
+    margin: calc(var(--pf-space-2xl) * -1) calc(var(--pf-space-2xl) * -1) var(--pf-space-0);
+    padding: var(--pf-space-2xl) var(--pf-space-3xl);
+    border-bottom: var(--pf-border-width) solid var(--pf-border);
+}
+
+.pf-terminal-body {
+    min-height: var(--pf-size-0);
+    overflow-y: auto;
+    padding: var(--pf-space-2xl) var(--pf-space-3xl) var(--pf-space-3xl);
+    color: var(--pf-text);
+    font-family: var(--pf-font-mono);
+    font-size: var(--pf-font-size-segmented);
+    line-height: var(--pf-line-height-copy);
+    white-space: pre-wrap;
+}
+
+.pf-terminal-line {
+    min-height: 1em;
+}
+
+/* 17. Menus */
+.pf-menu {
+    min-width: var(--pf-menu-min-width);
+    padding: var(--pf-space-xl);
+    display: grid;
+    gap: var(--pf-menu-gap);
+    border: var(--pf-border-width) solid var(--pf-border);
+    border-radius: var(--pf-radius-mobile-panel);
+    background: var(--pf-bg);
+    box-shadow: 0 18px 48px var(--pf-shadow-color), var(--pf-shadow-inset-accent);
+    backdrop-filter: blur(16px);
+}
+
+.pf-menu-popover {
+    position: fixed;
+    z-index: var(--pf-menu-z-index);
+}
+
+.pf-menu-group {
+    display: grid;
+    gap: var(--pf-menu-gap);
+}
+
+.pf-menu-divider {
+    height: var(--pf-border-width);
+    margin: calc(var(--pf-space-sm) / 2) var(--pf-space-0);
+    background: var(--pf-border);
+}
+
+.pf-menu-item {
+    width: var(--pf-size-full);
+    padding: 10px var(--pf-space-2xl);
+    border: var(--pf-border-width) solid var(--pf-transparent);
+    border-radius: var(--pf-radius-md);
+    background: var(--pf-transparent);
+    color: var(--pf-text);
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--pf-font-size-label);
+    text-align: left;
+    transition:
+        background-color var(--pf-duration-fast) var(--pf-ease-standard),
+        border-color var(--pf-duration-fast) var(--pf-ease-standard),
+        box-shadow var(--pf-duration-fast) var(--pf-ease-standard);
+}
+
+.pf-menu-item:hover {
+    background: var(--pf-accent-active);
+    border-color: var(--pf-accent-dim);
+    box-shadow: var(--pf-shadow-inset-accent);
+}
+
+.pf-menu-item-danger {
+    color: var(--pf-danger);
+}
+
+.pf-menu-item-danger:hover {
+    background: var(--pf-danger-dim);
+    border-color: var(--pf-danger-border-soft);
+}
+
+.pf-menu-item:disabled {
+    cursor: default;
+    opacity: var(--pf-disabled-opacity);
+}
+
+.pf-menu-item:disabled:hover {
+    background: var(--pf-transparent);
+    border-color: var(--pf-transparent);
+    box-shadow: none;
+}
+
+.pf-menu-item:focus-visible {
+    outline: none;
+    border-color: var(--pf-accent);
+    box-shadow: var(--pf-focus-ring-soft);
+}
+
+/* 18. Stats */
+.pf-stat {
+    align-content: start;
+}
+
+.pf-stat-value {
+    margin: var(--pf-space-0);
+    color: var(--pf-accent);
+    font-size: var(--pf-stat-value-size);
+    font-weight: var(--pf-font-weight-bold);
+    line-height: var(--pf-line-height-tight);
+}
+
+/* 19. Utilities */
 .pf-w-full {
     width: var(--pf-size-full);
 }
@@ -773,5 +1009,14 @@ body {
 
     .pf-segmented-btn {
         flex: var(--pf-flex-fill);
+    }
+
+    .pf-list-card-layout {
+        grid-template-columns: minmax(var(--pf-size-0), 1fr);
+    }
+
+    .pf-list-card-layout .pf-media-thumbnail {
+        max-width: 160px;
+        justify-self: end;
     }
 }
